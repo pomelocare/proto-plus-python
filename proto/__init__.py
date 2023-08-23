@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Needed for compatibility with fhir protos which also use path `proto.`.
+__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+
 from .enums import Enum
 from .fields import Field
 from .fields import MapField
