@@ -23,6 +23,7 @@ from .marshal import Marshal
 from .message import Message
 from .modules import define_module as module
 from .primitives import ProtoType
+from .version import __version__
 
 
 DOUBLE = ProtoType.DOUBLE
@@ -45,6 +46,7 @@ SINT64 = ProtoType.SINT64
 
 
 __all__ = (
+    "__version__",
     "Enum",
     "Field",
     "MapField",

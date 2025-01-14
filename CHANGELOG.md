@@ -1,5 +1,67 @@
 # Changelog
 
+## [1.25.0](https://github.com/googleapis/proto-plus-python/compare/v1.24.0...v1.25.0) (2024-10-15)
+
+
+### Features
+
+* Add support for Python 3.13 ([#493](https://github.com/googleapis/proto-plus-python/issues/493)) ([e9643a1](https://github.com/googleapis/proto-plus-python/commit/e9643a1f6135267d4389c77722120e6c98342a74))
+
+
+### Bug Fixes
+
+* Construct messages with nested struct ([#479](https://github.com/googleapis/proto-plus-python/issues/479)) ([aa4aa61](https://github.com/googleapis/proto-plus-python/commit/aa4aa61b8c7ac0cc34d2d5797999bb434de88737))
+* Fix 'Couldn't build proto file' when using Python 3.13 ([#492](https://github.com/googleapis/proto-plus-python/issues/492)) ([a48c39f](https://github.com/googleapis/proto-plus-python/commit/a48c39ff2212261bc932d10132086a6c55be22e9))
+* Fix conda compatibility issue ([#475](https://github.com/googleapis/proto-plus-python/issues/475)) ([e2f9c9d](https://github.com/googleapis/proto-plus-python/commit/e2f9c9d1c87230d0e8d9ccacdfd0872792d54f1b))
+* Fix issue with equality comparison of repeated field with None ([#477](https://github.com/googleapis/proto-plus-python/issues/477)) ([3476348](https://github.com/googleapis/proto-plus-python/commit/3476348c995af2ce5dfcbcc688e9ddf98fa36360))
+* Remove check for Protobuf version ([#474](https://github.com/googleapis/proto-plus-python/issues/474)) ([a1748a3](https://github.com/googleapis/proto-plus-python/commit/a1748a315b6b50128b0d9927b2fee353ec55975f))
+
+
+### Documentation
+
+* Fix typos in proto/message.py ([#463](https://github.com/googleapis/proto-plus-python/issues/463)) ([4d8ee65](https://github.com/googleapis/proto-plus-python/commit/4d8ee656e008ec2b22f347e5da539b6285ec4b1b))
+* Update message.py spelling error `paylod` → `payload` ([e59fc9a](https://github.com/googleapis/proto-plus-python/commit/e59fc9a4f8dd9fcb0804b77347662ae29d1a31a1))
+
+## [1.24.0](https://github.com/googleapis/proto-plus-python/compare/v1.23.0...v1.24.0) (2024-06-11)
+
+
+### Features
+
+* Add `always_print_fields_with_no_presence` fields to `to_json` and `to_dict` ([0f89372](https://github.com/googleapis/proto-plus-python/commit/0f893724cabe513a5a9f9c8428dbd31f1b4f1d52))
+
+
+### Bug Fixes
+
+* Add compatibility with protobuf==5.x ([0f89372](https://github.com/googleapis/proto-plus-python/commit/0f893724cabe513a5a9f9c8428dbd31f1b4f1d52))
+* AttributeError module 'google._upb._message' has no attribute 'MessageMapContainer' ([0f89372](https://github.com/googleapis/proto-plus-python/commit/0f893724cabe513a5a9f9c8428dbd31f1b4f1d52))
+* **deps:** Allow protobuf 5.x ([#457](https://github.com/googleapis/proto-plus-python/issues/457)) ([62d74e3](https://github.com/googleapis/proto-plus-python/commit/62d74e3275476b82fed48f2119fc761fe2371292))
+* Drop python 3.6 ([#456](https://github.com/googleapis/proto-plus-python/issues/456)) ([5a7666c](https://github.com/googleapis/proto-plus-python/commit/5a7666c15002aee0fab44a9aa6d3279aab3f1f69))
+
+
+### Documentation
+
+* Deprecate field `including_default_value_fields` in `to_json` and `to_dict` ([0f89372](https://github.com/googleapis/proto-plus-python/commit/0f893724cabe513a5a9f9c8428dbd31f1b4f1d52))
+
+## [1.23.0](https://github.com/googleapis/proto-plus-python/compare/v1.22.3...v1.23.0) (2023-12-01)
+
+
+### Features
+
+* Add additional parameters to `to_json()` and `to_dict()` methods ([#384](https://github.com/googleapis/proto-plus-python/issues/384)) ([8f13a46](https://github.com/googleapis/proto-plus-python/commit/8f13a46514e1d7653426c0db3c1021f9c794451a))
+* Add support for proto.__version__ ([#393](https://github.com/googleapis/proto-plus-python/issues/393)) ([48cd63f](https://github.com/googleapis/proto-plus-python/commit/48cd63f2d0a7c62c40d2724f46ac564c9884675b))
+* Add support for python 3.12 ([#400](https://github.com/googleapis/proto-plus-python/issues/400)) ([1b3a96f](https://github.com/googleapis/proto-plus-python/commit/1b3a96fae7a21bf0120a79ba6bf57aacfd2a0db4))
+
+
+### Bug Fixes
+
+* Use setuptools.find_namespace_packages ([#412](https://github.com/googleapis/proto-plus-python/issues/412)) ([30a6864](https://github.com/googleapis/proto-plus-python/commit/30a6864739eb8fb116caa5873044d3999f37f578))
+
+
+### Documentation
+
+* Add documentation on how to query the current oneof in a given message ([#408](https://github.com/googleapis/proto-plus-python/issues/408)) ([d89d811](https://github.com/googleapis/proto-plus-python/commit/d89d81112885f3b3ca4e1342fd2034ee6797fcf6))
+* Add example for __protobuf__ module level attribute ([#409](https://github.com/googleapis/proto-plus-python/issues/409)) ([6755884](https://github.com/googleapis/proto-plus-python/commit/675588450acc4636b2d82b2bc0860a314064c4a4))
+
 ## [1.22.3](https://github.com/googleapis/proto-plus-python/compare/v1.22.2...v1.22.3) (2023-06-22)
 
 

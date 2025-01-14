@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import pytest
+import re
 
 import proto
 from google.protobuf.json_format import MessageToJson, Parse, ParseError
@@ -120,10 +121,77 @@ def test_json_default_values():
     )
     assert json1 == '{"name":"Steve"}'
 
-    json2 = Squid.to_json(s).replace(" ", "").replace("\n", "")
-    assert (
-        json2 == '{"name":"Steve","massKg":0}' or json2 == '{"massKg":0,"name":"Steve"}'
+    json1 = (
+        Squid.to_json(s, always_print_fields_with_no_presence=False)
+        .replace(" ", "")
+        .replace("\n", "")
     )
+    assert json1 == '{"name":"Steve"}'
+
+    json1 = (
+        Squid.to_json(
+            s,
+            including_default_value_fields=False,
+            always_print_fields_with_no_presence=False,
+        )
+        .replace(" ", "")
+        .replace("\n", "")
+    )
+    assert json1 == '{"name":"Steve"}'
+
+    with pytest.raises(
+        ValueError,
+        match="Arguments.*always_print_fields_with_no_presence.*including_default_value_fields.*must match",
+    ):
+        Squid.to_json(
+            s,
+            including_default_value_fields=True,
+            always_print_fields_with_no_presence=False,
+        ).replace(" ", "").replace("\n", "")
+
+    with pytest.raises(
+        ValueError,
+        match="Arguments.*always_print_fields_with_no_presence.*including_default_value_fields.*must match",
+    ):
+        Squid.to_json(
+            s,
+            including_default_value_fields=False,
+            always_print_fields_with_no_presence=True,
+        ).replace(" ", "").replace("\n", "")
+
+    json2 = (
+        Squid.to_json(
+            s,
+            including_default_value_fields=True,
+            always_print_fields_with_no_presence=True,
+        )
+        .replace(" ", "")
+        .replace("\n", "")
+    )
+    assert json2 == '{"name":"Steve","massKg":0}'
+
+    json2 = (
+        Squid.to_json(
+            s,
+            including_default_value_fields=True,
+        )
+        .replace(" ", "")
+        .replace("\n", "")
+    )
+    assert json2 == '{"name":"Steve","massKg":0}'
+
+    json2 = (
+        Squid.to_json(
+            s,
+            always_print_fields_with_no_presence=True,
+        )
+        .replace(" ", "")
+        .replace("\n", "")
+    )
+    assert json2 == '{"name":"Steve","massKg":0}'
+
+    json2 = Squid.to_json(s).replace(" ", "").replace("\n", "")
+    assert json2 == '{"name":"Steve","massKg":0}'
 
     s1 = Squid.from_json(json1)
     s2 = Squid.from_json(json2)
@@ -172,3 +240,26 @@ def test_json_name():
     s_two = Squid.from_json(j)
 
     assert s == s_two
+
+
+def test_json_sort_keys():
+    class Squid(proto.Message):
+        name = proto.Field(proto.STRING, number=1)
+        mass_kg = proto.Field(proto.INT32, number=2)
+
+    s = Squid(name="Steve", mass_kg=20)
+    j = Squid.to_json(s, sort_keys=True, indent=None)
+
+    assert re.search(r"massKg.*name", j)
+
+
+# TODO: https://github.com/googleapis/proto-plus-python/issues/390
+def test_json_float_precision():
+    class Squid(proto.Message):
+        name = proto.Field(proto.STRING, number=1)
+        mass_kg = proto.Field(proto.FLOAT, number=2)
+
+    s = Squid(name="Steve", mass_kg=3.14159265)
+    j = Squid.to_json(s, float_precision=3, indent=None)
+
+    assert j == '{"name": "Steve", "massKg": 3.14}'
