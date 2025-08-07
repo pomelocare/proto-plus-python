@@ -26,9 +26,11 @@ PYTHON_VERSIONS = [
     "3.8",
     "3.9",
     "3.10",
+    "pypy3.10",
     "3.11",
     "3.12",
     "3.13",
+    "3.14",
 ]
 
 # Error if a python version is missing
@@ -160,3 +162,11 @@ def docs(session):
         "docs/",
         "docs/_build/html/",
     )
+
+
+@nox.session(python="3.10")
+def lint_setup_py(session):
+    """Verify that setup.py is valid (including RST check)."""
+
+    session.install("docutils", "Pygments")
+    session.run("python", "setup.py", "check", "--restructuredtext", "--strict")

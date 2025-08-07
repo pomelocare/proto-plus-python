@@ -7,6 +7,7 @@ branchProtectionRules:
   requiredStatusCheckContexts:
     - 'style-check'
     - 'docs'
+    - 'lint'
     - 'unit (3.7, cpp)'
     - 'unit (3.7, python)'
     - 'unit (3.7, upb)'
@@ -19,14 +20,17 @@ branchProtectionRules:
     - 'unit (3.10, cpp)'
     - 'unit (3.10, python)'
     - 'unit (3.10, upb)'
+    - 'unit (pypy3.10, python)'
     - 'unit (3.11, python)'
     - 'unit (3.11, upb)'
     - 'unit (3.12, python)'
     - 'unit (3.12, upb)'
     - 'unit (3.13, python)'
     - 'unit (3.13, upb)'
-    - 'prerelease (3.13, python)'
-    - 'prerelease (3.13, upb)'
+    - 'unit (3.14, python)'
+    - 'unit (3.14, upb)'
+    - 'prerelease (3.14, python)'
+    - 'prerelease (3.14, upb)'
     - cover
     - OwlBot Post Processor
     - 'cla/google'
